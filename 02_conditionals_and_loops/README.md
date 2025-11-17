@@ -42,6 +42,57 @@ Implement these functions:
 - `first_warm_day([10, 20, 22, 19])` -> `2`
 - `sum_until_limit([4, 4, 10], 9)` -> `8`
 
+## Required Knowledge: Conditionals
+
+Use `if`/`elif`/`else` to run different code based on conditions. Comparisons: `>`, `>=`, `<`, `<=`, `==`, `!=`. Logical operators: `and`, `or`, `not`.
+
+### Example: using conditionals to assign grades based on score.
+```python
+score = 73
+if score >= 85:
+   grade = "A"
+elif score >= 70:
+   grade = "B"
+elif score >= 55:
+   grade = "C"
+else:
+   grade = "D"
+```
+
+## Required Knowledge: For Loops
+
+Use `for` loops to iterate over sequences (lists, strings, ranges).
+
+### Example: counting prices over a particular value
+```python
+prices = [5.0, 12.5, 3.0, 20.0]
+count_over_10 = 0
+for p in prices:
+   if p > 10:
+      count_over_10 += 1
+```
+
+### Example of iterating with range
+```python
+
+for i in range(3):
+   print(i)  # 0, 1, 2
+```
+
+## Required Knowledge: While Loops
+
+Use `while` loops when you repeat until a condition changes. Ensure something inside the loop updates the condition to avoid infinite loops.
+
+### Example: saving money until reaching a goal
+
+```python
+goal = 100
+saved = 0
+deposit = 15
+while saved + deposit <= goal:
+   saved += deposit
+```
+
 ## Running the Tests
 
 ```pwsh
