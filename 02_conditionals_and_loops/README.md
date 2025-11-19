@@ -93,11 +93,26 @@ while saved + deposit <= goal:
    saved += deposit
 ```
 
+## Required Knowledge: Checking for case-insensitive matches
+To check for case-insensitive matches in strings, you can convert both strings to the same case (either lower or upper) before comparing them.
+
+### Example: checking for case-insensitive match
+Count how many times the name "Roger" appears in a list, regardless of case.
+
+```python
+input_strings = ["Roger", "Boris", "rOger", "alice", "ROGER"]
+count_roger = 0
+for name in input_strings:
+    if name.lower() == "roger":
+        count_roger += 1
+```
+
 ## Running the Tests
 
 ```pwsh
 pytest 02_conditionals_and_loops/test_weather.py -v
 ```
+or use the testing extension in VS Code.
 
 ## Success Criteria
 

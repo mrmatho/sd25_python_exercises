@@ -12,18 +12,21 @@ You are building a simple coffee shop order system. Your task is to create varia
 
 Complete the `order.py` file by:
 
-1. Create a variable `customer_name` that stores the customer's name as a string
-2. Create a variable `drink_size` that stores the size as a string (small, medium, or large)
-3. Create a variable `quantity` that stores the number of drinks as an integer
-4. Create a variable `price_per_drink` that stores the price as a float
-5. Create a variable `total_price` that calculates the total cost (quantity × price_per_drink)
+1. Create a variable `customer_name` that stores the customer's name as a *string*
+2. Create a variable `drink_size` that stores the size as a *string* (small, medium, or large)
+3. Create a variable `quantity` that stores the number of drinks as an *integer*
+4. Create a variable `price_per_drink` that stores the price as a *float*
+5. Create a variable `total_price` that *calculates* the total cost (quantity × price_per_drink)
 6. Create a variable `is_loyalty_member` that stores whether the customer is a loyalty member as a boolean
-7. Create a variable `discount_amount` that stores 0.0 if not a loyalty member, or 10% of total_price if they are a member
-8. Create a variable `final_price` that calculates the total after discount (total_price - discount_amount)
+7. Create a variable `discount_amount` that stores 0.0 *if* not a loyalty member, or *10% of total_price* if they are a member
+8. Create a variable `final_price` that *calculates* the total after discount (total_price - discount_amount)
+
+**You have the freedom to choose the values for the variables (e.g., customer name, drink size, quantity, price per drink, and loyalty status). Just ensure that the data types are correct and that the calculations for total price, discount amount, and final price are calculated - not just written.**
 
 ## Example
 
 If the customer is "Alice", orders 2 medium drinks at $4.50 each, and is a loyalty member:
+
 - `customer_name` = "Alice"
 - `drink_size` = "medium"
 - ...etc.

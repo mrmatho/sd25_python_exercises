@@ -76,4 +76,4 @@ def test_first_warm_day(temps, expected):
 )
 def test_sum_until_limit(numbers, limit, expected):
     result = weather.sum_until_limit(numbers, limit)
-    assert math.isclose(result, expected, rel_tol=1e-9, abs_tol=1e-9)
+    assert math.isclose(result, expected)
