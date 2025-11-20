@@ -42,6 +42,32 @@ Implement these functions:
 - `first_warm_day([10, 20, 22, 19])` -> `2`
 - `sum_until_limit([4, 4, 10], 9)` -> `8`
 
+## Required Knowledge: Functions and Return
+
+A **function** is a reusable block of code that performs a specific task. Functions can accept inputs (called **parameters** or **arguments**) and produce outputs using the `return` statement.
+
+The `return` statement sends a value back to whoever called the function. Once a `return` statement executes, the function stops immediately.
+
+```python
+def calculate_discount(price, percent):
+    discount = price * (percent / 100)
+    return discount
+
+result = calculate_discount(100, 10)  # result = 10.0
+```
+
+In this exercise, you'll complete functions that have already been defined. Your job is to add the logic inside each function and use `return` to send back the correct result.
+
+```python
+def is_adult(age):
+    if age >= 18:
+        return True
+    else:
+        return False
+
+status = is_adult(20)  # status = True
+```
+
 ## Required Knowledge: Conditionals
 
 Use `if`/`elif`/`else` to run different code based on conditions. Comparisons: `>`, `>=`, `<`, `<=`, `==`, `!=`. Logical operators: `and`, `or`, `not`.
