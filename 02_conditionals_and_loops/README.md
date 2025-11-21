@@ -136,6 +136,29 @@ for name in input_strings:
         count_roger += 1
 ```
 
+## 👋 Handy Knowledge: Type Hints
+
+A type hint is a way to indicate the expected data type of a variable, function parameter, or return value in Python. The type hints in our exercises help show what data types to expect from inputs and outputs, making the code easier to understand and maintain. The type hints also help VS Code and other IDEs give you ideas about methods for things like strings and lists as you type.
+
+```python
+def greet(name: str) -> str:
+      return f"Hello, {name}!"
+   ```
+
+We can see from the type hints that the `greet` function expects a string (`str`) as input and will return a string.
+
+```python
+
+def average(numbers: list[int | float]) -> float:
+    return sum(numbers) / len(numbers)
+```
+
+Here, we get lots of information from our type hints:
+
+- The `numbers` parameter should be a list containing integers (`int`) or floats (`float`).
+- The function will return a float.
+
+
 ## 🧪 Running the Tests
 
 ```pwsh
