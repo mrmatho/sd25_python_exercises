@@ -1,12 +1,12 @@
 # Exercise 01: Variables and Data Types
 
-## Theme: Coffee Shop Order
+## 🎯 Theme: Coffee Shop Order
 
-### Objective
+### 📝 Objective
 
 Practice storing data in variables and working with different Python data types including strings, integers, floats, and booleans.
 
-## Instructions
+## 📋 Instructions
 
 You are building a simple coffee shop order system. Your task is to create variables that store information about a customer's order.
 
@@ -23,7 +23,7 @@ Complete the `order.py` file by:
 
 **You have the freedom to choose the values for the variables (e.g., customer name, drink size, quantity, price per drink, and loyalty status). Just ensure that the data types are correct and that the calculations for total price, discount amount, and final price are calculated - not just written.**
 
-## Example
+## 💡 Example
 
 If the customer is "Alice", orders 2 medium drinks at $4.50 each, and is a loyalty member:
 
@@ -33,7 +33,7 @@ If the customer is "Alice", orders 2 medium drinks at $4.50 each, and is a loyal
 
 NOTE: For items like `total_price`, `discount_amount`, and `final_price`, ensure you perform the  calculations in the code - not in your brain! The values must be computed using the variables you have already created. 
 
-## Required Knowledge: Data types
+## 📚 Required Knowledge: Data types
 
 Python uses a data type system called "duck typing" or "dynamic typing," which means that the *type of a variable is based on the value assigned to it*. The main data types you will work with in this exercise include:
 - **String**: Used for text. Example: `street_address = "Waters Grove, Heathmont"`
@@ -43,7 +43,7 @@ Python uses a data type system called "duck typing" or "dynamic typing," which m
 
 This exercise tests that the variables you create are of the correct data type and that calculations are performed correctly.
 
-## Required Knowledge: Basic arithmetic
+## 📚 Required Knowledge: Basic arithmetic
 
 You will need to use basic arithmetic operations to calculate the total price, discount amount, and final price. The operations you could need include:
 
@@ -59,7 +59,7 @@ You will need to use basic arithmetic operations to calculate the total price, d
 
 Note that we use `*` rather than `x` for multiplication in Python.
 
-## Required Knowledge: Conditional statements
+## 📚 Required Knowledge: Conditional statements
 
 You will need to use an `if` statement to determine the discount amount based on whether the customer is a loyalty member.
 
@@ -75,7 +75,7 @@ else:
     discount = 0.0   # No discount for not nice guys
 ```
 
-## Running the Tests
+## 🧪 Running the Tests
 
 Run the tests to check your solution:
 
@@ -85,6 +85,6 @@ pytest 01_variables_and_types/test_order.py -v
 
 or using the Testing panel in VS Code.
 
-## Success Criteria
+## ✅ Success Criteria
 
 All tests should pass when you run the test file. Note that for this task, the tests will error until you have entered values for each variable as specified

@@ -6,7 +6,7 @@
 
 Practice writing `if`/`elif`/`else` statements and iterating with simple `for`/`while` loops.
 
-## Instructions
+## 📋 Instructions
 
 You are building small helpers for a basic weather app. Complete the functions in `weather.py` using conditionals and simple loops.
 
@@ -33,14 +33,14 @@ Implement these functions:
    - Stop adding when the next number would push the total above `limit`.
    - Return the total that does not exceed `limit`.
 
-## Example
+## 💡 Example
 
 - `temperature_feel(5)` -> `"cold"`
 - `count_rainy_days(["Sunny", "Rainy", "RAINY"])` -> `2`
 - `first_warm_day([10, 20, 22, 19])` -> `2`
 - `sum_until_limit([4, 4, 10], 9)` -> `8`
 
-## Required Knowledge: Functions and Return
+## 📚 Required Knowledge: Functions and Return
 
 A **function** is a reusable block of code that performs a specific task. Functions can accept inputs (called **parameters** or **arguments**) and produce outputs using the `return` statement.
 
@@ -66,7 +66,7 @@ def is_adult(age):
 status = is_adult(20)  # status = True
 ```
 
-## Required Knowledge: Conditionals
+## 📚 Required Knowledge: Conditionals
 
 Use `if`/`elif`/`else` to run different code based on conditions. Comparisons: `>`, `>=`, `<`, `<=`, `==`, `!=`. Logical operators: `and`, `or`, `not`.
 
@@ -84,7 +84,7 @@ else:
    grade = "D"
 ```
 
-## Required Knowledge: For Loops
+## 📚 Required Knowledge: For Loops
 
 Use `for` loops to iterate over sequences (lists, strings, ranges).
 
@@ -106,7 +106,7 @@ for i in range(3):
    print(i)  # 0, 1, 2
 ```
 
-## Required Knowledge: While Loops
+## 📚 Required Knowledge: While Loops
 
 Use `while` loops when you repeat until a condition changes. Ensure something inside the loop updates the condition to avoid infinite loops.
 
@@ -120,7 +120,7 @@ while saved + deposit <= goal:
    saved += deposit
 ```
 
-## Required Knowledge: Checking for case-insensitive matches
+## 📚 Required Knowledge: Checking for case-insensitive matches
 
 To check for case-insensitive matches in strings, you can convert both strings to the same case (either lower or upper) before comparing them.
 
@@ -136,7 +136,7 @@ for name in input_strings:
         count_roger += 1
 ```
 
-## Running the Tests
+## 🧪 Running the Tests
 
 ```pwsh
 pytest 02_conditionals_and_loops/test_weather.py -v
@@ -144,7 +144,7 @@ pytest 02_conditionals_and_loops/test_weather.py -v
 
 or use the testing extension in VS Code.
 
-## Success Criteria
+## ✅ Success Criteria
 
 - All tests pass for `test_weather.py`.
 - Your solutions use conditionals and loops as described.

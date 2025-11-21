@@ -6,7 +6,7 @@
 
 Practice working with dictionaries including creating, accessing, modifying, and iterating through key-value pairs.
 
-## Instructions
+## 📋 Instructions
 
 You are building a simple student gradebook system. Complete the functions in `gradebook.py` to perform various dictionary operations.
 
@@ -44,7 +44,7 @@ Implement these functions:
    - If a key exists in both, use the value from `gradebook2`.
    - Return the combined dictionary.
 
-## Example
+## 💡 Example
 
 ```python
 student = create_student("Bob", 78)  # {"name": "Bob", "grade": 78}
@@ -57,7 +57,7 @@ student_exists({"Alice": 85, "Bob": 90}, "Alice")  # True
 combine_gradebooks({"Alice": 85}, {"Bob": 90, "Alice": 88})  # {"Alice": 88, "Bob": 90}
 ```
 
-## Required Knowledge: Dictionaries
+## 📚 Required Knowledge: Dictionaries
 
 Dictionaries store data as key-value pairs. Keys must be unique and are typically strings, while values can be any data type.
 
@@ -68,7 +68,7 @@ name = person["name"]  # "John"
 age = person["age"]  # 30
 ```
 
-## Required Knowledge: Adding and Modifying Dictionary Items
+## 📚 Required Knowledge: Adding and Modifying Dictionary Items
 
 You can add new key-value pairs or modify existing ones using bracket notation.
 
@@ -79,7 +79,7 @@ car["year"] = 2021  # Update existing value
 # car is now {"brand": "Toyota", "year": 2021, "color": "red"}
 ```
 
-## Required Knowledge: Dictionary Methods
+## 📚 Required Knowledge: Dictionary Methods
 
 Common dictionary operations:
 
@@ -102,7 +102,7 @@ apple_count = inventory.get("apples")  # 10
 grape_count = inventory.get("grapes")  # None
 ```
 
-## Required Knowledge: Combining Dictionaries
+## 📚 Required Knowledge: Combining Dictionaries
 
 You can combine dictionaries using the `|` operator (Python 3.9+) or the `update()` method.
 
@@ -117,13 +117,13 @@ combined = dict1 | dict2  # {"a": 1, "b": 4, "c": 3}
 dict1.update(dict2)  # dict1 becomes {"a": 1, "b": 4, "c": 3}
 ```
 
-## Running the Tests
+## 🧪 Running the Tests
 
 ```pwsh
 pytest 04_dictionaries/test_gradebook.py -v
 ```
 
-## Success Criteria
+## ✅ Success Criteria
 
 - All tests pass for `test_gradebook.py`.
 - Your solutions use appropriate dictionary methods and operations.
