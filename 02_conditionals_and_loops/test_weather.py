@@ -17,16 +17,16 @@ import weather
 @pytest.mark.parametrize(
     "temp,label",
     [
-        (-10, "freezing"),
-        (0, "freezing"),
-        (1, "cold"),
-        (10, "cold"),
-        (11, "mild"),
-        (20, "mild"),
-        (21, "warm"),
-        (30, "warm"),
-        (31, "hot"),
-        (45.5, "hot"),
+        (-10, "freezing"),  # Below 0 should be freezing
+        (0, "freezing"),  # Exactly 0 is freezing (temp <= 0)
+        (1, "cold"),  # 1 to 10 is cold
+        (10, "cold"),  # Exactly 10 is still cold
+        (11, "mild"),  # 11 to 20 is mild
+        (20, "mild"),  # Exactly 20 is still mild
+        (21, "warm"),  # 21 to 30 is warm
+        (30, "warm"),  # Exactly 30 is still warm
+        (31, "hot"),  # Above 30 is hot
+        (45.5, "hot"),  # Float values work too
     ],
 )
 def test_temperature_feel_labels(temp, label):
@@ -36,11 +36,11 @@ def test_temperature_feel_labels(temp, label):
 @pytest.mark.parametrize(
     "forecast,count",
     [
-        ([], 0),
-        (["sunny"], 0),
-        (["rainy"], 1),
-        (["Rainy", "SUNNY", "RAINY", "cloudy"], 2),
-        (["RAINY", "rainy", "RainY"], 3),
+        ([], 0),  # Empty list has 0 rainy days
+        (["sunny"], 0),  # No rainy days
+        (["rainy"], 1),  # One rainy day
+        (["Rainy", "SUNNY", "RAINY", "cloudy"], 2),  # Case-insensitive: "Rainy" and "RAINY" both count
+        (["RAINY", "rainy", "RainY"], 3),  # All three match "rainy" case-insensitively
     ],
 )
 def test_count_rainy_days(forecast, count):
@@ -50,11 +50,11 @@ def test_count_rainy_days(forecast, count):
 @pytest.mark.parametrize(
     "temps,expected",
     [
-        ([10, 15, 20], -1),
-        ([21], 0),
-        ([10, 20, 21], 2),
-        ([19, 20, 20.0, 20.1], 3),
-        ([30, 5, 6], 0),
+        ([10, 15, 20], -1),  # No temp > 20, return -1
+        ([21], 0),  # First (and only) element is 21 > 20, return index 0
+        ([10, 20, 21], 2),  # First temp > 20 is at index 2
+        ([19, 20, 20.0, 20.1], 3),  # 20.1 is first temp STRICTLY greater than 20 (at index 3)
+        ([30, 5, 6], 0),  # First element 30 > 20, return index 0
     ],
 )
 def test_first_warm_day(temps, expected):
@@ -64,14 +64,14 @@ def test_first_warm_day(temps, expected):
 @pytest.mark.parametrize(
     "numbers,limit,expected",
     [
-        ([], 10, 0),
-        ([5], 10, 5),
-        ([6], 5, 0),
-        ([4, 4, 10], 9, 8),  # 4 + 4 = 8 (stop before 10 pushes over 9)
-        ([2, 2, 2, 2, 2], 7, 6),
-        ([3, 3, 3], 9, 9),
-        ([1.5, 2.5, 3.0], 6.0, 6.0),
-        ([1.5, 5.0, 0.1], 6.0, 1.5),
+        ([], 10, 0),  # Empty list returns 0
+        ([5], 10, 5),  # 5 doesn't exceed 10, so add it
+        ([6], 5, 0),  # Adding 6 would exceed 5, so return 0
+        ([4, 4, 10], 9, 8),  # 4 + 4 = 8 (stop before 10 pushes total to 18 > 9)
+        ([2, 2, 2, 2, 2], 7, 6),  # 2+2+2 = 6 (stop before next 2 pushes to 8 > 7)
+        ([3, 3, 3], 9, 9),  # 3+3+3 = 9 exactly (adding all doesn't exceed 9)
+        ([1.5, 2.5, 3.0], 6.0, 4.0),  # 1.5 + 2.5 = 4.0 (stop before 3.0 pushes to 7.0 > 6.0)
+        ([1.5, 5.0, 0.1], 6.0, 1.5),  # 1.5 only (next 5.0 would push to 6.5 > 6.0)
     ],
 )
 def test_sum_until_limit(numbers, limit, expected):

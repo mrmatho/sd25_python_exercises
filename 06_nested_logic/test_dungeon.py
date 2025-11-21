@@ -18,26 +18,36 @@ class TestCanOpenChest:
     
     def test_open_with_key(self):
         """Test opening a locked chest with a key"""
+        # has_key=True, chest_locked=True, strength=5
+        # Should open because player has a key
         assert dungeon.can_open_chest(True, True, 5) == "Chest opened!"
     
     def test_open_unlocked_chest(self):
         """Test opening an unlocked chest"""
+        # has_key=False, chest_locked=False, strength=5
+        # Should open because chest is not locked
         assert dungeon.can_open_chest(False, False, 5) == "Chest opened!"
     
     def test_open_with_high_strength(self):
         """Test opening with high strength"""
+        # has_key=False, chest_locked=True, strength=15 (> 10)
+        # Should open because strength > 10
         assert dungeon.can_open_chest(False, True, 15) == "Chest opened!"
     
     def test_cannot_open_chest(self):
         """Test chest remains closed"""
+        # has_key=False, chest_locked=True, strength=5 (<= 10)
+        # Cannot open: locked, no key, strength too low
         assert dungeon.can_open_chest(False, True, 5) == "Chest remains closed"
     
     def test_strength_exactly_10(self):
         """Test with strength exactly 10 (should not open)"""
+        # Strength must be STRICTLY greater than 10 (not >=)
         assert dungeon.can_open_chest(False, True, 10) == "Chest remains closed"
     
     def test_strength_11(self):
         """Test with strength 11 (should open)"""
+        # Strength of 11 is > 10, so chest opens
         assert dungeon.can_open_chest(False, True, 11) == "Chest opened!"
 
 
@@ -46,27 +56,33 @@ class TestExploreRoom:
     
     def test_dark_cave_with_torch(self):
         """Test exploring dark cave with torch"""
+        # Dark cave + torch = find treasure
         assert dungeon.explore_room("dark_cave", True) == "You found a treasure chest!"
     
     def test_dark_cave_without_torch(self):
         """Test exploring dark cave without torch"""
+        # Dark cave needs a torch to explore
         assert dungeon.explore_room("dark_cave", False) == "Too dark to explore"
     
     def test_library(self):
         """Test exploring library (torch doesn't matter)"""
+        # Library always yields ancient book, torch not required
         assert dungeon.explore_room("library", True) == "You found an ancient book"
         assert dungeon.explore_room("library", False) == "You found an ancient book"
     
     def test_armory_with_torch(self):
         """Test exploring armory with torch"""
+        # Armory + torch = find legendary sword
         assert dungeon.explore_room("armory", True) == "You found a legendary sword!"
     
     def test_armory_without_torch(self):
         """Test exploring armory without torch"""
+        # Armory needs a torch to explore
         assert dungeon.explore_room("armory", False) == "Too dark to explore"
     
     def test_unknown_room(self):
         """Test exploring unknown room type"""
+        # Any room type not in the list returns default message
         assert dungeon.explore_room("kitchen", True) == "Nothing interesting here"
         assert dungeon.explore_room("bathroom", False) == "Nothing interesting here"
 
@@ -109,16 +125,19 @@ class TestFindTreasurePosition:
     
     def test_find_treasure_basic(self):
         """Test finding treasure in a simple dungeon"""
+        # Treasure is at row 1, col 0 (bottom-left)
         dungeon_map = [["empty", "monster"], ["treasure", "empty"]]
         assert dungeon.find_treasure_position(dungeon_map) == (1, 0)
     
     def test_find_treasure_top_right(self):
         """Test finding treasure in top right"""
+        # Treasure is at row 0, col 1 (top-right)
         dungeon_map = [["empty", "treasure"], ["monster", "empty"]]
         assert dungeon.find_treasure_position(dungeon_map) == (0, 1)
     
     def test_treasure_not_found(self):
         """Test when treasure is not in the dungeon"""
+        # No treasure in the grid, should return None
         dungeon_map = [["empty", "monster"], ["empty", "empty"]]
         assert dungeon.find_treasure_position(dungeon_map) is None
     
@@ -139,6 +158,7 @@ class TestCalculateDamage:
     
     def test_calculate_mixed_attacks(self):
         """Test calculating damage from mixed attack types"""
+        # critical: 10 * 2 = 20, normal: 5 * 1 = 5, total = 25
         attacks = [
             {"type": "critical", "power": 10},
             {"type": "normal", "power": 5}
@@ -147,6 +167,7 @@ class TestCalculateDamage:
     
     def test_calculate_all_critical(self):
         """Test all critical attacks"""
+        # critical: 5 * 2 = 10, critical: 10 * 2 = 20, total = 30
         attacks = [
             {"type": "critical", "power": 5},
             {"type": "critical", "power": 10}
@@ -155,6 +176,7 @@ class TestCalculateDamage:
     
     def test_calculate_all_normal(self):
         """Test all normal attacks"""
+        # normal: 10, normal: 15, total = 25
         attacks = [
             {"type": "normal", "power": 10},
             {"type": "normal", "power": 15}
@@ -163,6 +185,7 @@ class TestCalculateDamage:
     
     def test_calculate_with_weak(self):
         """Test with weak attacks"""
+        # weak: 10 // 2 = 5, normal: 5, total = 10
         attacks = [
             {"type": "weak", "power": 10},
             {"type": "normal", "power": 5}
@@ -179,16 +202,19 @@ class TestSafePathExists:
     
     def test_safe_path_all_safe(self):
         """Test with all safe cells"""
+        # All cells are safe, can reach bottom-right from (0,0)
         grid = [["safe", "safe"], ["safe", "safe"]]
         assert dungeon.safe_path_exists(grid, 0, 0) is True
     
     def test_safe_path_blocked(self):
         """Test with blocked path"""
+        # From (0,0) can only go right (trap) or down (trap), both blocked
         grid = [["safe", "trap"], ["trap", "safe"]]
         assert dungeon.safe_path_exists(grid, 0, 0) is False
     
     def test_safe_path_right_then_down(self):
         """Test path going right then down"""
+        # Path exists: (0,0) -> (0,1) -> (0,2) -> (1,2)
         grid = [["safe", "safe", "safe"], ["trap", "trap", "safe"]]
         assert dungeon.safe_path_exists(grid, 0, 0) is True
     
@@ -208,12 +234,14 @@ class TestGeneratePattern:
     
     def test_generate_2x3(self):
         """Test generating a 2x3 pattern"""
+        # 2 rows, 3 columns, all filled with "X"
         result = dungeon.generate_pattern(2, 3, "X")
         expected = [["X", "X", "X"], ["X", "X", "X"]]
         assert result == expected
     
     def test_generate_3x2(self):
         """Test generating a 3x2 pattern"""
+        # 3 rows, 2 columns, all filled with "O"
         result = dungeon.generate_pattern(3, 2, "O")
         expected = [["O", "O"], ["O", "O"], ["O", "O"]]
         assert result == expected
@@ -234,12 +262,14 @@ class TestGetRoomTypes:
     
     def test_count_room_types_basic(self):
         """Test counting room types in a simple dungeon"""
+        # Count each unique room type: 2 empty, 1 monster, 1 treasure
         dungeon_map = [["empty", "monster"], ["empty", "treasure"]]
         result = dungeon.get_room_types(dungeon_map)
         assert result == {"empty": 2, "monster": 1, "treasure": 1}
     
     def test_count_room_types_all_same(self):
         """Test when all rooms are the same type"""
+        # All 4 cells are "empty"
         dungeon_map = [["empty", "empty"], ["empty", "empty"]]
         result = dungeon.get_room_types(dungeon_map)
         assert result == {"empty": 4}
