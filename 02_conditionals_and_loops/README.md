@@ -158,7 +158,6 @@ Here, we get lots of information from our type hints:
 - The `numbers` parameter should be a list containing integers (`int`) or floats (`float`).
 - The function will return a float.
 
-
 ## 🧪 Running the Tests
 
 ```pwsh

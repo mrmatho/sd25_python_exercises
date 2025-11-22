@@ -36,6 +36,7 @@ NOTE: For items like `total_price`, `discount_amount`, and `final_price`, ensure
 ## 📚 Required Knowledge: Data types
 
 Python uses a data type system called "duck typing" or "dynamic typing," which means that the *type of a variable is based on the value assigned to it*. The main data types you will work with in this exercise include:
+
 - **String**: Used for text. Example: `street_address = "Waters Grove, Heathmont"`
 - **Integer**: Used for whole numbers. Example: `count = 1`
 - **Float**: Used for decimal numbers. Example: `percentage_tax = 28.5`
@@ -52,10 +53,10 @@ You will need to use basic arithmetic operations to calculate the total price, d
 - Multiplication (`*`)
 - Division (`/`)
 - Floor Division (`//`)
-    - Floor division performs division and **rounds down** to the nearest whole number.
+  - Floor division performs division and **rounds down** to the nearest whole number.
 - Modulus (`%`)
-    - The modulus operator returns the **remainder** of a division operation.
-    - Modulus and floor division often get used together.
+  - The modulus operator returns the **remainder** of a division operation.
+  - Modulus and floor division often get used together.
 
 Note that we use `*` rather than `x` for multiplication in Python.
 
