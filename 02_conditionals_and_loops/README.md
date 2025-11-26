@@ -159,12 +159,11 @@ Here, we get lots of information from our type hints:
 - The function will return a float.
 
 ## 🧪 Running the Tests
+Use the testing panel in VS Code to test your work, or run
 
 ```pwsh
 pytest 02_conditionals_and_loops/test_weather.py -v
 ```
-
-or use the testing extension in VS Code.
 
 ## ✅ Success Criteria
 
